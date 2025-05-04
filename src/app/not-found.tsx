@@ -1,14 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { useRouter } from "next/navigation";
 
 const NotFound = () => {
-  const router = useRouter();
-
-  const handleGoHome = () => {
-    router.push("/");
-  };
-
   return (
     <Box
       display="flex"
@@ -25,7 +18,7 @@ const NotFound = () => {
       <Typography variant="h5" color="textSecondary" gutterBottom>
         Oops! A página que você está procurando não foi encontrada.
       </Typography>
-      <Button variant="contained" color="primary" onClick={handleGoHome}>
+      <Button variant="contained" color="primary" href="/">
         Go to Homepage
       </Button>
     </Box>

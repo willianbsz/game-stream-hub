@@ -61,7 +61,7 @@ export function ChatContainer({
           backgroundColor: "#f9f9f9",
           maxHeight: "400px", // Set the maximum height
         }}
-        ref={(el) => {
+        ref={(el: HTMLDivElement | null) => {
           if (el) {
             el.scrollTop = el.scrollHeight; // Scroll to the bottom
           }

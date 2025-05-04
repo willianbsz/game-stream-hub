@@ -17,13 +17,13 @@ export const metadata = {
 } satisfies Metadata;
 
 interface PageProps {
-  searchParams: { email?: string };
+  searchParams: Promise<{ email?: string }>;
 }
 
 export default async function Page({
   searchParams,
 }: PageProps): Promise<React.JSX.Element> {
-  const { email } = searchParams;
+  const { email } = await searchParams;
 
   if (!email) {
     return (

@@ -10,11 +10,13 @@ export const metadata = {
 } satisfies Metadata;
 
 interface PageProps {
-  searchParams: { oobCode?: string };
+  searchParams: Promise<{ oobCode?: string }>;
 }
 
-export default function Page({ searchParams }: PageProps): React.JSX.Element {
-  const { oobCode } = searchParams;
+export default async function Page({
+  searchParams,
+}: PageProps): Promise<React.JSX.Element> {
+  const { oobCode } = await searchParams;
 
   if (!oobCode) {
     return (

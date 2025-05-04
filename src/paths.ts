@@ -7,8 +7,8 @@ export const paths = {
     updatePassword: "/auth/update-password",
   },
   app: {
-    home: "/home",
-    profile: "/home/profile",
+    home: "/dashboard",
+    profile: "/dashboard/profile",
   },
   home: "/",
 };

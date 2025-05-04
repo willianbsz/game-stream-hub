@@ -12,6 +12,8 @@ import { paths } from "@/paths";
 import { ResetPasswordButton } from "@/components/auth/reset-password-button";
 import { DynamicLogo } from "@/components/core/logo";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: `Link de recuperação enviado`,
 } satisfies Metadata;

@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { TextField, Box, Stack, Divider, Button } from "@mui/material";
 import { PaperPlaneRight as PaperPlaneIcon } from "@phosphor-icons/react/dist/ssr/PaperPlaneRight";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
+import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
 
 const ChatInput: React.FC<{ onSend: (message: string) => void }> = ({
   onSend,
@@ -79,10 +78,9 @@ const ChatInput: React.FC<{ onSend: (message: string) => void }> = ({
                       }}
                       onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the picker
                     >
-                      <Picker
-                        data={data}
-                        onEmojiSelect={(emoji: { native: string }) => {
-                          setInputValue((prev) => prev + emoji.native);
+                      <EmojiPicker
+                        onEmojiClick={(emoji: EmojiClickData) => {
+                          setInputValue((prev) => prev + emoji.emoji);
                         }}
                       />
                     </Box>

@@ -109,9 +109,9 @@ export default function DashboardPage() {
       console.error("Error sending message: ", error);
     }
   };
-
+  
   const videoLink = {
-    cs2: "https://www.youtube.com/embed/UVnUgViWdvI",
+    cs2: "https://www.youtube.com/embed/VVUHwJ6hG7M",
     lol: "https://www.youtube.com/embed/FfeJlxSxJMw",
     valorant: "https://www.youtube.com/embed/ZOz8vw_btDc",
     r6: "",

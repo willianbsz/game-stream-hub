@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 Game Stream Hub
 
-## Getting Started
+O **Game Stream Hub** é uma plataforma desenvolvida com Next.js e Material UI, criada para torcedores acompanharem jogos ao vivo com integração de vídeos do YouTube e chat em tempo real. Inspirada nos "furiosos", fãs da FURIA, a aplicação permite selecionar o jogo em destaque, interagir com outros torcedores e acompanhar transmissões 
+de forma centralizada.
 
-First, run the development server:
+---
+
+## 🚀 Funcionalidades
+
+- **Landing Page** Onde nos apresentamos - seções "Sobre" e "Contato".
+- **Autenticação completa** com Google, login, cadastro e recuperação de senha.
+- **Seleção dinâmica de jogos** com dropdown personalizado.
+- **Exibição de vídeo do youtube ao vivo (iframe)** se o jogo estiver com link na aplicação.
+- **Chat em tempo real por jogo**, com mensagens visíveis instantaneamente entre usuários.
+- **Design responsivo** e intuitivo, ideal para desktop e mobile.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+[Next.js](https://nextjs.org/)       | Framework React para SSR/SSG e rotas modernas
+
+[Material UI (MUI)](https://mui.com/)  | Biblioteca de componentes estilizados
+
+[Firebase Auth](https://firebase.google.com/products/auth) | Autenticação com Google e email/senha
+
+[Firebase Firestore](https://firebase.google.com/products/firestore) | Banco de dados em tempo real                     
+
+[Firebase App Hosting](https://firebase.google.com/products/app-hosting) | Hospedagem com CI/CD automático                  
+
+---
+
+## 📦 Estrutura do Projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+├── src/
+│   ├── components/       # Componentes reutilizáveis (Chat, formulários, Header, etc.)
+│   ├── app/              # Rotas da aplicação
+│   │   ├── auth/         # Páginas de login, cadastro, recuperação de senha, etc.
+│   │   └── dashboard/    # Páginas da aplicação com seleção dos jogos, chat em tempo real e perfil.
+│   ├── lib/              # Serviços (auth, firestore, etc.)
+│   ├── hooks/            # Hooks react customizados que são reaproveitados na aplicação
+│   ├── contexts/         # Contextos react que são reaproveitados na aplicação
+│   ├── config.ts         # Arquivo com as configurações da aplicação (env)
+│   ├── paths.ts          # Arquivo com as rotas da aplicação
+│   └── styles/           # Temas e estilos customizados
+├── firebase.json         # Configuração do Firebase Hosting
+├── .firebaserc           # Referência ao projeto Firebase
+├── package.json
+└── README.md
+``` 
+---
+## 📦 Rodando em modo de desenvolvimento
+
+Para rodar em modo de desenvolvimento, basta seguir as etapas:
+
+### Criar o arquivo .env com as variáveis abaixo:
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=your_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+⚠️ **ATENÇÃO** 
+Para o funcionamento do chat, é necessário criar um index no firestore contendo a seguinte configuração:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+``` gameId Crescente timestamp Decrescente __name__ Decrescente ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Clone o projeto
+```
+git clone https://github.com/willianbsz/game-stream-hub.git
+cd game-stream-hub
+```
 
-## Learn More
+### Instale as dependências
+```
+npm install --legacy-peer-deps
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Rode o servidor de desenvolvimento
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Publicando alterações
+O projeto é publico. Então, caso queiram fazer alterações, basta abrir uma PR apontada para a branch "main". Assim que aprovada, as alterações serão publicadas automáticamente.

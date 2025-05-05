@@ -6,7 +6,8 @@ import Box from "@mui/material/Box";
 import { UpdatePasswordForm } from "@/components/auth/update-password-form";
 
 export const metadata = {
-  title: `Alterar senha`,
+  title: `Alterar senha - Game Stream Hub`,
+  description: `Altere sua senha de acesso ao Game Stream Hub`,
 } satisfies Metadata;
 
 interface PageProps {

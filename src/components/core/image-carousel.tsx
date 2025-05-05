@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Box, IconButton, Stack } from "@mui/material";
 import { ArrowRight as ArrowRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowRight";

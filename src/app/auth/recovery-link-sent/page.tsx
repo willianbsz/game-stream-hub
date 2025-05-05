@@ -15,7 +15,8 @@ import { DynamicLogo } from "@/components/core/logo";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: `Link de recuperação enviado`,
+  title: `Link de recuperação enviado - Game Stream Hub`,
+  description: `Link de recuperação enviado para o seu e-mail`,
 } satisfies Metadata;
 
 interface PageProps {

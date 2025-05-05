@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 
-const NotFound = () => {
+export default function NotFound() {
   return (
     <Box
       display="flex"
@@ -23,6 +23,4 @@ const NotFound = () => {
       </Button>
     </Box>
   );
-};
-
-export default NotFound;
+}

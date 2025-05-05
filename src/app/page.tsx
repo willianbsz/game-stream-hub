@@ -1,10 +1,14 @@
-// /app/page.tsx (Landing Page)
-"use client";
 import ImageCarousel from "@/components/core/image-carousel";
 import { DynamicLogo } from "@/components/core/logo";
 import { paths } from "@/paths";
 import { Box, Button, Container, Typography } from "@mui/material";
 import Link from "next/link";
+
+export const metadata = {
+  title: "Game Stream Hub - Home",
+  description:
+    "Bem vindo ao Game Stream Hub, sua plataforma de E-Sports favorita!",
+};
 
 export default function LandingPage() {
   return (

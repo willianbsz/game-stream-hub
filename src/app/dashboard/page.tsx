@@ -155,7 +155,6 @@ export default function DashboardPage() {
             <Typography>Live não disponível no momento</Typography>
           )}
           <Box sx={{ mt: 2 }}>
-            {/* Chat placeholder */}
             <ChatContainer
               messages={messages}
               onSendMessage={handleSendMessage}

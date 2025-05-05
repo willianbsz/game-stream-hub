@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 import { SignUpForm } from "@/components/auth/sign-up-form";
 
 export const metadata = {
-  title: `Sign up `,
+  title: `Criar conta - Game Stream Hub`,
+  description: `Crie sua conta de acesso ao Game Stream Hub`,
 } satisfies Metadata;
 
 export default function Page(): React.JSX.Element {

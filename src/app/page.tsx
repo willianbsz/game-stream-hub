@@ -1,4 +1,3 @@
-import ImageCarousel from "@/components/core/image-carousel";
 import { DynamicLogo } from "@/components/core/logo";
 import { paths } from "@/paths";
 import { Box, Button, Container, Typography } from "@mui/material";
@@ -20,8 +19,8 @@ export default function LandingPage() {
           height={160}
           width={160}
         />
-        <Typography variant="h3" gutterBottom>
-          Bem vindo Game Stream Hub
+        <Typography variant="h3" gutterBottom textAlign={"center"}>
+          Bem vindo ao {"\n"} Game Stream Hub!
         </Typography>
 
         <Button
@@ -32,15 +31,6 @@ export default function LandingPage() {
         >
           Entrar
         </Button>
-      </Box>
-
-      <Box sx={{ height: 400, mb: 4, bgcolor: "#eee" }}>
-        <ImageCarousel
-          images={[
-            "https://cdn.ome.lt/7W-hvLGFV1046YznreT3rljWIbE=/970x360/smart/uploads/conteudo/fotos/furia-aniversario-6-anos.png",
-            "https://static.cdnlive.com.br/uploads/602/produto/17418698927689_detalhe.jpg",
-          ]}
-        />
       </Box>
 
       <Box id="about-us" sx={{ my: 4 }}>

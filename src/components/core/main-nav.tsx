@@ -120,24 +120,6 @@ function ResponsiveAppBar() {
             )}
           </Box>
 
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href={paths.home}
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pathName === paths.home ? (
               <>
@@ -182,7 +164,7 @@ function ResponsiveAppBar() {
                   {settings.map((setting) => (
                     <MenuItem key={setting.text} onClick={handleCloseUserMenu}>
                       <Typography
-                        sx={{ textAlign: "center" }}
+                        sx={{ textAlign: "end", width: "100%" }}
                         onClick={setting.onClick}
                       >
                         {setting.text}
@@ -192,7 +174,11 @@ function ResponsiveAppBar() {
                 </Menu>
               </>
             ) : (
-              <Button variant="contained" color="primary">
+              <Button
+                href={paths.auth.signIn}
+                variant="contained"
+                color="primary"
+              >
                 Entrar
               </Button>
             )}

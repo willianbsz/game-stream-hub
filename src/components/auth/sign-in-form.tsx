@@ -3,9 +3,7 @@
 import * as React from "react";
 import RouterLink from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Icon } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import FormControl from "@mui/material/FormControl";
@@ -30,7 +28,7 @@ import { z as zod } from "zod";
 import { paths } from "@/paths";
 import { getFirebaseAuth } from "@/lib/auth/client";
 import { toast } from "@/components/core/toaster";
-import { DynamicLogo } from "../core/logo";
+import { DynamicLogo } from "@/components/core/logo";
 
 interface OAuthProvider {
   id: "google" | "github";
@@ -121,17 +119,15 @@ export function SignInForm(): React.JSX.Element {
   );
 
   return (
-    <Stack spacing={3}>
-      <div>
-        <Box sx={{ display: "inline-block", fontSize: 0 }}>
-          <DynamicLogo
-            colorDark="light"
-            colorLight="light"
-            height={80}
-            width={80}
-          />
-        </Box>
-      </div>
+    <Stack spacing={3} paddingY={3}>
+      <Stack alignItems={"center"} justifyContent={"center"}>
+        <DynamicLogo
+          colorDark="light"
+          colorLight="light"
+          height={80}
+          width={80}
+        />
+      </Stack>
       <Stack spacing={1}>
         <Typography variant="h5">Entre com sua conta</Typography>
         <Typography color="text.secondary" variant="body2">
@@ -150,13 +146,8 @@ export function SignInForm(): React.JSX.Element {
           {oAuthProviders.map(
             (provider): React.JSX.Element => (
               <Button
-                color="secondary"
                 disabled={isPending}
-                endIcon={
-                  <Icon color="primary">
-                    <GoogleLogoIcon weight="bold" />
-                  </Icon>
-                }
+                endIcon={<GoogleLogoIcon weight="bold" />}
                 key={provider.id}
                 onClick={(): void => {
                   onAuth(provider.id).catch(() => {

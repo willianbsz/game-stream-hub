@@ -3,9 +3,7 @@
 import * as React from "react";
 import RouterLink from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Icon } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import FormControl from "@mui/material/FormControl";
@@ -20,7 +18,6 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-  updateCurrentUser,
   updateProfile,
 } from "firebase/auth";
 import type { Auth } from "firebase/auth";
@@ -30,6 +27,7 @@ import { z as zod } from "zod";
 import { paths } from "@/paths";
 import { getFirebaseAuth } from "@/lib/auth/client";
 import { toast } from "@/components/core/toaster";
+import { DynamicLogo } from "@/components/core/logo";
 
 interface OAuthProvider {
   id: "google" | "github";
@@ -118,24 +116,20 @@ export function SignUpForm(): React.JSX.Element {
       setIsPending(true);
 
       try {
-        console.log("here we go");
         const userCredentials = await createUserWithEmailAndPassword(
           firebaseAuth,
           values.email,
           values.password
         );
 
-        console.log(values.name);
-        console.log(userCredentials.user);
-
         await updateProfile(userCredentials.user, {
           displayName: values.name,
         });
 
-        await updateCurrentUser(firebaseAuth, {
-          ...userCredentials.user,
-          displayName: values.name,
-        });
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        window.location.reload();
+
+        console.log("User created successfully", userCredentials.user);
 
         // UserProvider will handle Router refresh
         // After refresh, GuestGuard will handle the redirect
@@ -153,17 +147,15 @@ export function SignUpForm(): React.JSX.Element {
   const [terms, confirmPassword] = watch(["terms", "confirmPassword"]);
 
   return (
-    <Stack spacing={3}>
-      <div>
-        <Box sx={{ display: "inline-block", fontSize: 0 }}>
-          {/* <DynamicLogo
-            colorDark="light"
-            colorLight="light"
-            height={80}
-            width={80}
-          /> */}
-        </Box>
-      </div>
+    <Stack spacing={3} paddingY={3}>
+      <Stack alignItems={"center"} justifyContent={"center"}>
+        <DynamicLogo
+          colorDark="light"
+          colorLight="light"
+          height={80}
+          width={80}
+        />
+      </Stack>
       <Stack spacing={1}>
         <Typography variant="h5">Criar conta</Typography>
         <Typography color="text.secondary" variant="body2">
@@ -182,13 +174,8 @@ export function SignUpForm(): React.JSX.Element {
           {oAuthProviders.map(
             (provider): React.JSX.Element => (
               <Button
-                color="secondary"
                 disabled={isPending}
-                endIcon={
-                  <Icon color="primary">
-                    <GoogleLogoIcon weight="bold" />
-                  </Icon>
-                }
+                endIcon={<GoogleLogoIcon weight="bold" />}
                 key={provider.id}
                 onClick={(): void => {
                   onAuth(provider.id).catch(() => {
@@ -281,36 +268,6 @@ export function SignUpForm(): React.JSX.Element {
                 </FormControl>
               )}
             />
-            {/* <Controller
-              control={control}
-              name="terms"
-              render={({ field }) => (
-                <div>
-                  <FormControlLabel
-                    control={<Checkbox {...field} />}
-                    label={
-                      <React.Fragment>
-                        Ao criar uma conta você confirma que está ciente dos
-                        nossos{" "}
-                        <Link
-                          href={
-                            process.env.NEXT_PUBLIC_TERMS_AND_CONDITIONS_URL
-                          }
-                          target="_blank"
-                        >
-                          Termos de uso e Política de privacidade
-                        </Link>
-                      </React.Fragment>
-                    }
-                  />
-                  {errors.terms ? (
-                    <FormHelperText error>
-                      {errors.terms.message}
-                    </FormHelperText>
-                  ) : null}
-                </div>
-              )}
-            /> */}
             {errors.root ? (
               <Alert color="error">{errors.root.message}</Alert>
             ) : null}

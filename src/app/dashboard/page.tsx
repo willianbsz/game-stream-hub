@@ -8,7 +8,7 @@ import {
   Box,
   SelectChangeEvent,
 } from "@mui/material";
-import ChatContainer, { ChatMessage } from "@/components/chat/container";
+import ChatContainer from "@/components/chat/container";
 import { useEffect } from "react";
 import {
   collection,
@@ -23,6 +23,7 @@ import {
 import { getFirebaseFirestore } from "@/lib/firestore/client";
 import React from "react";
 import { useAuthUser } from "@/hooks/use-auth-user";
+import { ChatMessage } from "@/components/chat/messages";
 
 type GameId =
   | "cs2"

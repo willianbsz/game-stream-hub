@@ -5,7 +5,6 @@ import RouterLink from "next/link";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -22,7 +21,7 @@ import { z as zod } from "zod";
 
 import { paths } from "@/paths";
 import { getFirebaseAuth } from "@/lib/auth/client";
-// import { DynamicLogo } from "@/components/core/logo";
+import { DynamicLogo } from "@/components/core/logo";
 
 const schema = zod.object({
   email: zod
@@ -83,17 +82,15 @@ export function ResetPasswordForm(): React.JSX.Element {
   );
 
   return (
-    <Stack spacing={3}>
-      <div>
-        <Box sx={{ display: "inline-block", fontSize: 0 }}>
-          {/* <DynamicLogo
-            colorDark="light"
-            colorLight="light"
-            height={80}
-            width={80}
-          /> */}
-        </Box>
-      </div>
+    <Stack spacing={3} paddingY={3}>
+      <Stack alignItems={"center"} justifyContent={"center"}>
+        <DynamicLogo
+          colorDark="light"
+          colorLight="light"
+          height={80}
+          width={80}
+        />
+      </Stack>
       <div>
         <Link
           component={RouterLink}
